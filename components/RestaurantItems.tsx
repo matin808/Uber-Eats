@@ -2,7 +2,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const RestaurantItem = () => {
+const RestaurantItems = () => {
   return (
     <TouchableOpacity activeOpacity={1} style={{marginBottom: 2}}>
       <View
@@ -77,4 +77,4 @@ const RestaurantInfo = () => {
   );
 };
 
-export default RestaurantItem;
+export default RestaurantItems;
