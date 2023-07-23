@@ -26,8 +26,13 @@ const Categories = () => {
       style={{
         backgroundColor: '#fff',
         marginTop: 5,
-        paddingLeft: 10,
-        paddingVertical: 10,
+        marginRight: 5,
+        paddingVertical: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        alignSelf: 'center',
+        flex: 1,
       }}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {items.map((item, index) => {
@@ -36,7 +41,10 @@ const Categories = () => {
               key={index}
               style={{
                 marginLeft: 15,
+                // justifyContent: 'center',
+                // alignSelf: 'center',
                 alignItems: 'center',
+                // marginRight: 5,
               }}>
               <Image
                 source={item.image}
