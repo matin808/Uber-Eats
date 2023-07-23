@@ -2,29 +2,86 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const RestaurantItems = () => {
+export const localRestaurants = [
+  {
+    name: 'Beachside Bar',
+    image_url:
+      'https://static.onecms.io/wp-content/uploads/sites/9/2020/04/24/ppp-why-wont-anyone-rescue-restaurants-FT-BLOG0420.jpg',
+    categories: ['Cafe', 'Bar'],
+    price: '$$',
+    reviews: 1244,
+    rating: 4.5,
+  },
+  {
+    name: 'Benihana',
+    image_url:
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+    categories: ['Cafe', 'Bar'],
+    price: '$$',
+    reviews: 1244,
+    rating: 3.7,
+  },
+  {
+    name: "India's Grill",
+    image_url:
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
+    categories: ['Indian', 'Bar'],
+    price: '$$',
+    reviews: 700,
+    rating: 4.9,
+  },
+];
+
+interface restaurantDetailProps {
+  name?: string;
+  image_url?: string;
+  categories?: string[];
+  price?: string;
+  reviews?: number;
+  rating?: number;
+}
+// type resDet = restaurantDetailProps[];
+
+const RestaurantItems = ({restaurantDetails}: any) => {
   return (
-    <TouchableOpacity activeOpacity={1} style={{marginBottom: 2}}>
-      <View
-        style={{
-          backgroundColor: '#fff',
-          padding: 10,
-          marginTop: 10,
-          borderRadius: 15,
-        }}>
-        <RestaurantImage />
-        <RestaurantInfo />
-      </View>
-    </TouchableOpacity>
+    <View>
+      {restaurantDetails.map(
+        (restaurant: restaurantDetailProps, index: any) => {
+          return (
+            <TouchableOpacity
+              key={index}
+              activeOpacity={1}
+              style={{marginBottom: 2}}>
+              <View
+                style={{
+                  backgroundColor: '#fff',
+                  padding: 10,
+                  marginTop: 10,
+                  borderRadius: 15,
+                }}>
+                <RestaurantImage image={restaurant.image_url} />
+                <RestaurantInfo
+                  name={restaurant.name}
+                  rating={restaurant.rating}
+                />
+              </View>
+            </TouchableOpacity>
+          );
+        },
+      )}
+    </View>
   );
 };
 
-const RestaurantImage = () => {
+interface imageProps {
+  image: string;
+}
+const RestaurantImage = ({image}: any) => {
   return (
     <>
       <Image
         source={{
-          uri: 'https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg',
+          uri: image,
         }}
         style={{width: '100%', height: 180}}
       />
@@ -40,7 +97,12 @@ const RestaurantImage = () => {
   );
 };
 
-const RestaurantInfo = () => {
+interface InfoProps {
+  name: string;
+  rating: number;
+}
+
+const RestaurantInfo = ({name, rating}: any) => {
   return (
     <View
       style={{
@@ -49,9 +111,7 @@ const RestaurantInfo = () => {
         marginTop: 10,
       }}>
       <View>
-        <Text style={{fontWeight: 'bold', fontSize: 16}}>
-          FarmHouse Kichen Thai Causine
-        </Text>
+        <Text style={{fontWeight: 'bold', fontSize: 16}}>{name}</Text>
         <Text
           style={{
             marginTop: 5,
@@ -71,7 +131,7 @@ const RestaurantInfo = () => {
           paddingHorizontal: 8,
           paddingVertical: 8,
         }}>
-        <Text style={{fontSize: 15}}>4.5</Text>
+        <Text style={{fontSize: 15}}>{rating}</Text>
       </View>
     </View>
   );
