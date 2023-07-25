@@ -45,7 +45,7 @@ interface restaurantDetailProps {
 const RestaurantItems = ({restaurantDetails}: any) => {
   return (
     <View>
-      {restaurantDetails.map(
+      {restaurantDetails?.map(
         (restaurant: restaurantDetailProps, index: any) => {
           return (
             <TouchableOpacity
@@ -59,10 +59,10 @@ const RestaurantItems = ({restaurantDetails}: any) => {
                   marginTop: 10,
                   borderRadius: 15,
                 }}>
-                <RestaurantImage image={restaurant.image_url} />
+                <RestaurantImage image={restaurant?.image_url} />
                 <RestaurantInfo
-                  name={restaurant.name}
-                  rating={restaurant.rating}
+                  name={restaurant?.name}
+                  rating={restaurant?.rating}
                 />
               </View>
             </TouchableOpacity>
@@ -81,7 +81,7 @@ const RestaurantImage = ({image}: any) => {
     <>
       <Image
         source={{
-          uri: image,
+          uri: image ? image : undefined,
         }}
         style={{width: '100%', height: 180}}
       />

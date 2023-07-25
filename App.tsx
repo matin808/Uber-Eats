@@ -25,11 +25,13 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Home from './screens/Home';
+import RestaurantDetail from './screens/RestaurantDetail';
 
 function App(): JSX.Element {
   return (
     <View style={{flex: 1}}>
       <Home />
+      {/* <RestaurantDetail /> */}
     </View>
   );
 }

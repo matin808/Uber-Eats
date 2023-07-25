@@ -3,19 +3,19 @@ import React from 'react';
 
 const items = [
   {
-    image: require('../assests/images/shopping-bag.png'),
+    image: require('../../assests/images/shopping-bag.png'),
     text: 'Pick-up',
   },
   {
-    image: require('../assests/images/soft-drink.png'),
+    image: require('../../assests/images/soft-drink.png'),
     text: 'Soft Drinks',
   },
   {
-    image: require('../assests/images/bread.png'),
+    image: require('../../assests/images/bread.png'),
     text: 'Bakery Items',
   },
   {
-    image: require('../assests/images/fast-food.png'),
+    image: require('../../assests/images/fast-food.png'),
     text: 'Fast Foods',
   },
 ];
