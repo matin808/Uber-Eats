@@ -30,8 +30,8 @@ import RestaurantDetail from './screens/RestaurantDetail';
 function App(): JSX.Element {
   return (
     <View style={{flex: 1}}>
-      <Home />
-      {/* <RestaurantDetail /> */}
+      {/* <Home /> */}
+      <RestaurantDetail />
     </View>
   );
 }

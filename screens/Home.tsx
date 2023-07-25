@@ -27,10 +27,10 @@ const Home = () => {
   // for search input
   const [searchInput, setSearchInput] = React.useState('SanDiego');
 
-  const getRestaurantFromYelp = () => {
+  const getRestaurantFromYelp = async () => {
     if (searchInput.length === 0) setSearchInput('SanDiego');
     console.log(searchInput);
-    return fetch(
+    return await fetch(
       `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchInput}`,
       {
         method: 'GET',
@@ -51,9 +51,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (searchInput.length > 5) getRestaurantFromYelp(); // for saving API call limit
+    if (searchInput.length > 4) getRestaurantFromYelp(); // for saving API call limit
     // getRestaurantFromYelp();
-  }, [searchInput, activeTab]);
+  }, [searchInput]);
+
+  useEffect(() => {
+    getRestaurantFromYelp();
+  }, [activeTab]);
 
   return (
     <SafeAreaView style={{backgroundColor: '#eee', flex: 1}}>

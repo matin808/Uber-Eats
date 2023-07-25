@@ -6,7 +6,8 @@ const image =
   'https://media-cdn.tripadvisor.com/media/photo-s/10/0d/be/cd/photo2jpg.jpg';
 
 const title = 'FarmHouse Kitchen Thai Cuisine';
-const description = 'Thai, - Comfort Food - $$ - 4.5 stars(500+) - 0.2 miles';
+
+const description = 'Thai, - Comfort Food - $$ - 4.5 ⭐(500+)';
 const About = () => {
   return (
     <View>
@@ -24,15 +25,21 @@ export const RestaurantImage = (props: {image: string}) => (
 );
 
 export const RestaurantTitle = (props: {title: string}) => (
-  <View style={{margin: 8}}>
-    <Text style={{fontSize: 28, fontWeight: '900'}}>{props.title}</Text>
+  <View style={{marginTop: 8, marginHorizontal: 15}}>
+    <Text style={{fontSize: 29, fontWeight: '600'}}>{props.title}</Text>
   </View>
 );
 
 export const RestaurantDescription = (props: {description: string}) => (
-  <View style={{marginHorizontal: 8, marginVertical: 5}}>
-    <Text style={{fontSize: 15, fontWeight: '700'}}>{props.description}</Text>
-  </View>
+  <Text
+    style={{
+      fontSize: 15.5,
+      marginTop: 10,
+      marginHorizontal: 15,
+      fontWeight: '400',
+    }}>
+    {props.description}
+  </Text>
 );
 
 export default About;
