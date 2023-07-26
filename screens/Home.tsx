@@ -27,10 +27,10 @@ const Home = () => {
   // for search input
   const [searchInput, setSearchInput] = React.useState('SanDiego');
 
-  const getRestaurantFromYelp = async () => {
+  const getRestaurantFromYelp = () => {
     if (searchInput.length === 0) setSearchInput('SanDiego');
     console.log(searchInput);
-    return await fetch(
+    return fetch(
       `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchInput}`,
       {
         method: 'GET',

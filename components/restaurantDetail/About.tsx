@@ -2,17 +2,29 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {Image} from 'react-native-elements';
 
-const image =
-  'https://media-cdn.tripadvisor.com/media/photo-s/10/0d/be/cd/photo2jpg.jpg';
+const yelpRestaurantInfo = {
+  name: 'FarmHouse Kitchen Thai Cuisine',
+  image:
+    'https://media-cdn.tripadvisor.com/media/photo-s/10/0d/be/cd/photo2jpg.jpg',
+  price: '$$',
+  reviews: '1500',
+  rating: 4.5,
+  categories: [{title: 'Thai'}, {title: 'Comfort Food'}],
+};
 
-const title = 'FarmHouse Kitchen Thai Cuisine';
+const {name, price, image, reviews, rating, categories} = yelpRestaurantInfo;
 
-const description = 'Thai, - Comfort Food - $$ - 4.5 ⭐(500+)';
+const formattedCategories = categories.map((cat: any) => cat.title).join(' . ');
+
+const description = `${formattedCategories} ${
+  price ? ' . ' + price : ' '
+} . 🎫 . ${rating} ⭐ (${reviews})`;
+
 const About = () => {
   return (
     <View>
       <RestaurantImage image={image} />
-      <RestaurantTitle title={title} />
+      <RestaurantTitle title={name} />
       <RestaurantDescription description={description} />
     </View>
   );

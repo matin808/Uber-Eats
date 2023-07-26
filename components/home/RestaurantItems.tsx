@@ -2,7 +2,16 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export const localRestaurants = [
+interface restaurantDetailProps {
+  name: string;
+  image_url: string;
+  categories: string[];
+  price: string;
+  reviews: number;
+  rating: number;
+}
+
+export const localRestaurants: restaurantDetailProps[] = [
   {
     name: 'Beachside Bar',
     image_url:
@@ -32,17 +41,14 @@ export const localRestaurants = [
   },
 ];
 
-interface restaurantDetailProps {
-  name?: string;
-  image_url?: string;
-  categories?: string[];
-  price?: string;
-  reviews?: number;
-  rating?: number;
-}
 // type resDet = restaurantDetailProps[];
 
-const RestaurantItems = ({restaurantDetails}: any) => {
+interface IRestaurantComponentProps {
+  restaurantDetails: restaurantDetailProps[];
+}
+
+const RestaurantItems = (props: IRestaurantComponentProps) => {
+  const {restaurantDetails} = props;
   return (
     <View>
       {restaurantDetails?.map(
@@ -61,8 +67,8 @@ const RestaurantItems = ({restaurantDetails}: any) => {
                 }}>
                 <RestaurantImage image={restaurant?.image_url} />
                 <RestaurantInfo
-                  name={restaurant?.name}
-                  rating={restaurant?.rating}
+                  name={restaurant.name}
+                  rating={restaurant.rating}
                 />
               </View>
             </TouchableOpacity>
@@ -73,10 +79,12 @@ const RestaurantItems = ({restaurantDetails}: any) => {
   );
 };
 
-interface imageProps {
+interface IImageProps {
   image: string;
 }
-const RestaurantImage = ({image}: any) => {
+
+const RestaurantImage = (props: IImageProps) => {
+  const {image} = props;
   return (
     <>
       <Image
@@ -102,7 +110,8 @@ interface InfoProps {
   rating: number;
 }
 
-const RestaurantInfo = ({name, rating}: any) => {
+const RestaurantInfo = (props: InfoProps) => {
+  const {name, rating} = props;
   return (
     <View
       style={{

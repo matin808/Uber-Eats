@@ -11,35 +11,35 @@ interface item {
 
 const itemData: item[] = [
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
@@ -47,21 +47,21 @@ const itemData: item[] = [
   },
 
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
     price: '$10.99',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
-    title: 'Tandorri chicken',
+    title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal, Enjoy the best and tasty food in the world',
     price: '$10.99',
     image:
@@ -71,13 +71,17 @@ const itemData: item[] = [
 
 const MenuItem = () => {
   return (
-    <View style={{paddingBottom: 25}}>
+    <View style={{paddingBottom: 1}}>
       {itemData.map((item, index) => {
         console.log(item, 'thisis item');
         return (
-          <View key={index} style={{flex: 1}}>
+          <View key={index} style={{flex: 1, marginVertical: 5}}>
             <Item item={item} />
-            <Divider width={0.5} orientation="vertical" />
+            <Divider
+              width={0.5}
+              orientation="vertical"
+              // style={{marginTop: 10}}
+            />
           </View>
         );
       })}
@@ -101,7 +105,7 @@ const Item = ({item}: ItemProps) => {
       }}>
       <View
         style={{
-          flex: 3,
+          flex: 2.8,
           backgroundColor: '#fff',
           paddingHorizontal: 12,
           paddingVertical: 6,
@@ -110,12 +114,19 @@ const Item = ({item}: ItemProps) => {
           style={{
             borderRadius: 10,
             fontSize: 23,
-            fontWeight: '700',
+            fontWeight: '600',
             paddingVertical: 3,
           }}>
           {item.title}
         </Text>
-        <Text style={{fontSize: 15, marginVertical: 3, fontWeight: '600'}}>
+        <Text
+          style={{
+            fontSize: 15,
+            marginVertical: 3,
+            fontWeight: '500',
+            maxWidth: '90%',
+            marginLeft: 5,
+          }}>
           {item.desc}
         </Text>
         <Text
@@ -123,11 +134,12 @@ const Item = ({item}: ItemProps) => {
             fontSize: 15,
             marginVertical: 5,
             fontWeight: '500',
+            marginLeft: 5,
           }}>
           {item.price}
         </Text>
       </View>
-      <View style={{flex: 1, marginRight: 10}}>
+      <View style={{flex: 1, marginRight: 10, marginTop: 5}}>
         <Image
           source={{
             uri: item.image,
