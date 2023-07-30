@@ -18,7 +18,7 @@ interface restaurantDetailProps {
 const yelpApiKey =
   '3aGVxgwUz5WIwgJL102wVPfqVljV_sqz-Gt9h18chdNo8__azYbxHzfEWcHa8n-C9WKnXq4I-s0O-6Yid7S2VhxfcywxqpKNbaeiTXbBmmAEz_g0ccMET0MDf1--ZHYx';
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const [restaurantDetails, setRestaurantDetails] =
     React.useState(localRestaurants);
   // for active tab
@@ -67,7 +67,10 @@ const Home = () => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Categories />
-        <RestaurantItems restaurantDetails={restaurantDetails} />
+        <RestaurantItems
+          restaurantDetails={restaurantDetails}
+          navigation={navigation}
+        />
       </ScrollView>
 
       <Divider width={1} />

@@ -1,6 +1,8 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {Divider} from 'react-native-elements';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {useDispatch} from 'react-redux';
 
 interface item {
   title: string;
@@ -69,18 +71,21 @@ const itemData: item[] = [
   },
 ];
 
-const MenuItem = () => {
+interface RNameInterface {
+  restaurantName: string;
+}
+
+const MenuItem = ({restaurantName}: RNameInterface) => {
   return (
-    <View style={{paddingBottom: 1}}>
+    <View style={{paddingBottom: 1, backgroundColor: '#fff'}}>
       {itemData.map((item, index) => {
-        console.log(item, 'thisis item');
         return (
           <View key={index} style={{flex: 1, marginVertical: 5}}>
-            <Item item={item} />
+            <Item item={item} restaurantName={restaurantName} />
             <Divider
               width={0.5}
               orientation="vertical"
-              // style={{marginTop: 10}}
+              style={{marginHorizontal: 20}}
             />
           </View>
         );
@@ -91,11 +96,18 @@ const MenuItem = () => {
 
 interface ItemProps {
   item: item;
+  restaurantName: string;
 }
 
-const Item = ({item}: ItemProps) => {
-  console.log(item);
+const Item = ({item, restaurantName}: ItemProps) => {
+  const dispatch = useDispatch();
 
+  const selectedItem = (item: item) => {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: {item, restaurantName: restaurantName},
+    });
+  };
   return (
     <View
       style={{
@@ -103,11 +115,19 @@ const Item = ({item}: ItemProps) => {
         margin: 5,
         marginBottom: 20,
       }}>
+      <View style={{alignSelf: 'center', marginLeft: 20}}>
+        <BouncyCheckbox
+          iconStyle={{borderColor: 'lightgray'}}
+          fillColor="green"
+          onPress={() => selectedItem(item)}
+        />
+      </View>
       <View
         style={{
           flex: 2.8,
           backgroundColor: '#fff',
-          paddingHorizontal: 12,
+          // paddingHorizontal: 12,
+          paddingRight: 10,
           paddingVertical: 6,
         }}>
         <Text

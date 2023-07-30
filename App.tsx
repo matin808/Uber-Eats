@@ -7,31 +7,18 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Text, useColorScheme, View} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Home from './screens/Home';
+import RootNavigation from './Navigation';
 import RestaurantDetail from './screens/RestaurantDetail';
 
 function App(): JSX.Element {
   return (
+    // <RootNavogation />
     <View style={{flex: 1}}>
       {/* <Home /> */}
-      <RestaurantDetail />
+      {/* <RestaurantDetail /> */}
+      <RootNavigation />
     </View>
   );
 }
