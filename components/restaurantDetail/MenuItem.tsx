@@ -2,9 +2,10 @@ import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {Divider} from 'react-native-elements';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 interface item {
+  id: number;
   title: string;
   desc: string;
   price: string;
@@ -13,59 +14,67 @@ interface item {
 
 const itemData: item[] = [
   {
+    id: 1,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 2,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 3,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 4,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 5,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$300',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
 
   {
+    id: 6,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$400',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 7,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$10.99',
+    price: '$450',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
   {
+    id: 8,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal, Enjoy the best and tasty food in the world',
-    price: '$10.99',
+    price: '$450',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -100,12 +109,24 @@ interface ItemProps {
 }
 
 const Item = ({item, restaurantName}: ItemProps) => {
+  const cartItems = useSelector(
+    (state: any) => state.cartReducer.selectedItems.items,
+  );
+
+  const isFoodInCart = (food: item, cartItems: item[]) => {
+    return Boolean(cartItems.find(item => item.id === food.id));
+  };
+
   const dispatch = useDispatch();
 
-  const selectedItem = (item: item) => {
+  const selectedItem = (checked: boolean, item: item) => {
     dispatch({
       type: 'ADD_TO_CART',
-      payload: {item, restaurantName: restaurantName},
+      payload: {
+        ...item,
+        restaurantName: restaurantName,
+        checkboxValue: checked,
+      },
     });
   };
   return (
@@ -119,7 +140,14 @@ const Item = ({item, restaurantName}: ItemProps) => {
         <BouncyCheckbox
           iconStyle={{borderColor: 'lightgray'}}
           fillColor="green"
-          onPress={() => selectedItem(item)}
+          onPress={checked => selectedItem(checked, item)}
+          isChecked={isFoodInCart(item, cartItems)}
+          // isChecked={
+          //   cartItems.findIndex((cartItem: item) => cartItem.id === item.id) >
+          //   -1
+          //     ? true
+          //     : false
+          // }
         />
       </View>
       <View
