@@ -17,7 +17,7 @@ const itemData: item[] = [
     id: 1,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$200',
+    price: '₹200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -25,7 +25,7 @@ const itemData: item[] = [
     id: 2,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$200',
+    price: '₹200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -33,7 +33,7 @@ const itemData: item[] = [
     id: 3,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$200',
+    price: '₹200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -41,7 +41,7 @@ const itemData: item[] = [
     id: 4,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$200',
+    price: '₹200',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -49,7 +49,7 @@ const itemData: item[] = [
     id: 5,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$300',
+    price: '₹300',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -58,7 +58,7 @@ const itemData: item[] = [
     id: 6,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$400',
+    price: '₹400',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -66,7 +66,7 @@ const itemData: item[] = [
     id: 7,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal',
-    price: '$450',
+    price: '₹450',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },
@@ -74,7 +74,7 @@ const itemData: item[] = [
     id: 8,
     title: 'Tandoori chicken',
     desc: 'Yummy, Tasty, Happy Meal, Enjoy the best and tasty food in the world',
-    price: '$450',
+    price: '₹450',
     image:
       'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
   },

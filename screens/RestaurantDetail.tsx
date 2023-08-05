@@ -1,4 +1,4 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import About from '../components/restaurantDetail/About';
 import {Divider} from 'react-native-elements';
@@ -10,11 +10,11 @@ const RestaurantDetail = ({route, navigation}: any) => {
   return (
     //
     <>
-      <View style={{backgroundColor: '#fff'}}>
+      <View style={styles.RestaurantDetailContainer}>
         {/* to access it in about component we have to send it to about */}
         <About route={route} />
 
-        <Divider width={1.8} style={{marginVertical: 10}} />
+        <Divider width={1.8} style={styles.DividerStyle} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <MenuItem restaurantName={route.params?.name} />
@@ -23,5 +23,14 @@ const RestaurantDetail = ({route, navigation}: any) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  RestaurantDetailContainer: {
+    backgroundColor: '#fff',
+  },
+  DividerStyle: {
+    marginVertical: 10,
+  },
+});
 
 export default RestaurantDetail;

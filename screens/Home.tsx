@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
 import HeaderTabs from '../components/home/HeaderTabs';
 import SearchBar from '../components/home/SearchBar';
@@ -7,14 +7,14 @@ import RestaurantItems from '../components/home/RestaurantItems';
 import {localRestaurants} from '../components/home/RestaurantItems';
 import BottomTabs from '../components/home/BottomTabs';
 import {Divider} from 'react-native-elements';
-interface restaurantDetailProps {
-  name: string;
-  image_url: string;
-  categories: string[];
-  price: string;
-  reviews: number;
-  rating: number;
-}
+// interface restaurantDetailProps {
+//   name: string;
+//   image_url: string;
+//   categories: string[];
+//   price: string;
+//   reviews: number;
+//   rating: number;
+// }
 const yelpApiKey =
   '3aGVxgwUz5WIwgJL102wVPfqVljV_sqz-Gt9h18chdNo8__azYbxHzfEWcHa8n-C9WKnXq4I-s0O-6Yid7S2VhxfcywxqpKNbaeiTXbBmmAEz_g0ccMET0MDf1--ZHYx';
 
@@ -28,8 +28,10 @@ const Home = ({navigation}: any) => {
   const [searchInput, setSearchInput] = React.useState('SanDiego');
 
   const getRestaurantFromYelp = () => {
-    if (searchInput.length === 0) setSearchInput('SanDiego');
-    console.log(searchInput);
+    if (searchInput.length === 0) {
+      setSearchInput('SanDiego');
+    }
+
     return fetch(
       `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${searchInput}`,
       {
@@ -51,17 +53,20 @@ const Home = ({navigation}: any) => {
   };
 
   useEffect(() => {
-    if (searchInput.length > 4) getRestaurantFromYelp(); // for saving API call limit
-    // getRestaurantFromYelp();
+    if (searchInput.length > 4) {
+      getRestaurantFromYelp();
+    } // for saving API call limit
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchInput]);
 
   useEffect(() => {
     getRestaurantFromYelp();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   return (
-    <SafeAreaView style={{backgroundColor: '#eee', flex: 1}}>
-      <View style={{backgroundColor: '#fff', padding: 15}}>
+    <SafeAreaView style={styles.HomeContainer}>
+      <View style={styles.HeaderContainer}>
         <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <SearchBar searchInput={searchInput} setSearchInput={setSearchInput} />
       </View>
@@ -78,5 +83,16 @@ const Home = ({navigation}: any) => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  HomeContainer: {
+    backgroundColor: '#eee',
+    flex: 1,
+  },
+  HeaderContainer: {
+    backgroundColor: '#fff',
+    padding: 15,
+  },
+});
 
 export default Home;
