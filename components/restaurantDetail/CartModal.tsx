@@ -1,34 +1,40 @@
 /* eslint-disable react-native/no-inline-styles */
 import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import React from 'react';
-import {useSelector} from 'react-redux';
 import {Divider} from 'react-native-elements';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type ViewCartContainerProps = {
   setModalVisible: (arg0: boolean) => void;
   total: number;
   cartData: any;
+  restaurantName: string;
+  handlePress: () => void;
 };
 
 const ViewCartContainer = ({
   setModalVisible,
   total,
   cartData,
+  restaurantName,
+  handlePress,
 }: ViewCartContainerProps) => {
-  const restaurantName = useSelector(
-    (state: any) => state.cartReducer.selectedItems.restaurantName,
-  );
-
-  //   const cartItemsData = useSelector(
-  //     (state: any) => state.cartReducer.selectedItems.items,
+  //   const restaurantName = useSelector(
+  //     (state: any) => state.cartReducer.selectedItems.restaurantName,
   //   );
-  // console.log('cartData chckout', cartData);
+
   return (
     <View style={styles.viewCartContainer}>
       <View style={styles.viewCartSection}>
+        <MaterialCommunityIcons
+          onPress={() => setModalVisible(false)}
+          name="close-circle"
+          size={25}
+        />
         <Text
           style={{
-            marginVertical: 10,
+            marginVertical: 5,
+            marginBottom: 20,
             alignSelf: 'center',
             fontWeight: 'bold',
             fontSize: 22,
@@ -38,12 +44,21 @@ const ViewCartContainer = ({
         <View>
           <FlatList
             data={cartData}
-            keyExtractor={item => item.key}
+            keyExtractor={item => item.id}
             renderItem={({item, index}) => {
               return (
                 <View key={index} style={styles.cartItemsDataStyle}>
-                  <Text style={styles.cartItemsTextStyle}>{item?.title}</Text>
-                  <Text style={styles.cartItemsTextStyle}>{item?.price}</Text>
+                  <Text style={[styles.cartItemsTextStyle, {marginLeft: 10}]}>
+                    {item?.title}
+                  </Text>
+                  <Text
+                    style={[
+                      styles.cartItemsTextStyle,
+                      {marginLeft: 'auto', marginRight: 20},
+                    ]}>
+                    {item?.price}
+                  </Text>
+
                   <Divider width={5} />
                 </View>
               );
@@ -56,9 +71,7 @@ const ViewCartContainer = ({
           </View>
         </View>
 
-        <TouchableOpacity
-          onPress={() => setModalVisible(false)}
-          style={styles.checkoutBtnStyle}>
+        <TouchableOpacity onPress={handlePress} style={styles.checkoutBtnStyle}>
           <Text style={styles.CheckOutTextStyle}>Checkout</Text>
           <Text style={styles.CheckOutTextStyle}>{total}</Text>
         </TouchableOpacity>
@@ -103,10 +116,10 @@ const styles = StyleSheet.create({
   },
   cartItemsDataStyle: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 40,
-    // margin: 20,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    width: '100%',
+    alignSelf: 'center',
     marginVertical: 10,
     borderBottomColor: 'grey',
     borderBottomWidth: 1,
@@ -114,6 +127,7 @@ const styles = StyleSheet.create({
   },
   cartItemsTextStyle: {
     fontSize: 18,
+    alignSelf: 'center',
   },
   cartItemsTotalStyle: {
     flexDirection: 'row',

@@ -3,8 +3,14 @@ import {View, Text, TouchableOpacity, Modal} from 'react-native';
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import ViewCartContainer from './CartModal';
+import firestore from '@react-native-firebase/firestore';
 
-const ViewCart = ({navigation, restaurantName}: any) => {
+interface IViewCartProps {
+  navigation: any;
+  restaurantName: string;
+}
+
+const ViewCart = ({navigation, restaurantName}: IViewCartProps) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const cartData = useSelector(
@@ -25,6 +31,26 @@ const ViewCart = ({navigation, restaurantName}: any) => {
   const handleModalVisibility = () => {
     setModalVisible(true);
   };
+
+  // firebase
+  const addOrderToFirebase = () => {
+    const ordersCollections = firestore().collection('orders');
+    // firestore()
+    //   .collection('orders')
+    ordersCollections
+      .add({
+        items: cartData,
+        restaurantName: restaurantName,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        console.log('Item added!');
+      });
+
+    setModalVisible(false);
+    navigation.navigate('OrderCompleted');
+  };
+  //
   return (
     <>
       {total ? (
@@ -70,7 +96,9 @@ const ViewCart = ({navigation, restaurantName}: any) => {
             <ViewCartContainer
               setModalVisible={setModalVisible}
               total={totalInd}
+              handlePress={addOrderToFirebase}
               cartData={cartData}
+              restaurantName={restaurantName}
             />
           </Modal>
         </View>

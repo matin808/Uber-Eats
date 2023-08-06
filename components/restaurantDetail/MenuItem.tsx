@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {Divider} from 'react-native-elements';
@@ -15,68 +16,42 @@ interface item {
 const itemData: item[] = [
   {
     id: 1,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹200',
+    title: 'Lasagna',
+    desc: 'With butter lettuce, tomato and sauce bechamel',
+    price: '₹250',
     image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
+      'https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg',
   },
   {
     id: 2,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹200',
-    image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
+    title: 'Tandoori Chicken',
+    desc: 'Amazing Indian dish with tenderloin chicken off the sizzles 🔥',
+    price: '₹270',
+    image: 'https://i.ytimg.com/vi/BKxGodX9NGg/maxresdefault.jpg',
   },
   {
     id: 3,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹200',
+    title: 'Chilaquiles',
+    desc: 'Chilaquiles with cheese and sauce. A delicious mexican dish 🇲🇽',
+    price: '₹350',
     image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
+      'https://i2.wp.com/chilipeppermadness.com/wp-content/uploads/2020/11/Chilaquales-Recipe-Chilaquiles-Rojos-1.jpg',
   },
   {
     id: 4,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹200',
+    title: 'Chicken Caesar Salad',
+    desc: 'One can never go wrong with a chicken caesar salad. Healthy option with greens and proteins!',
+    price: '₹400',
     image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
+      'https://images.themodernproper.com/billowy-turkey/production/posts/2019/Easy-italian-salad-recipe-10.jpg?w=1200&h=1200&q=82&fm=jpg&fit=crop&fp-x=0.5&fp-y=0.5&dm=1614096227&s=c0f63a30cef3334d97f9ecad14be51da',
   },
   {
     id: 5,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹300',
-    image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
-  },
-
-  {
-    id: 6,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
-    price: '₹400',
-    image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
-  },
-  {
-    id: 7,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal',
+    title: 'Lasagna',
+    desc: 'With butter lettuce, tomato and sauce bechamel',
     price: '₹450',
     image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
-  },
-  {
-    id: 8,
-    title: 'Tandoori chicken',
-    desc: 'Yummy, Tasty, Happy Meal, Enjoy the best and tasty food in the world',
-    price: '₹450',
-    image:
-      'https://img.freepik.com/premium-photo/tandoori-chicken-is-chicken-dish-prepared-by-roasting-chicken-marinated-yogurt-spices-tandoor-clay-oven-served-with-onion-green-chutney_466689-77620.jpg',
+      'https://thestayathomechef.com/wp-content/uploads/2017/08/Most-Amazing-Lasagna-2-e1574792735811.jpg',
   },
 ];
 
@@ -152,7 +127,7 @@ const Item = ({item, restaurantName}: ItemProps) => {
       </View>
       <View
         style={{
-          flex: 2.8,
+          flex: 0.7,
           backgroundColor: '#fff',
           // paddingHorizontal: 12,
           paddingRight: 10,
@@ -161,7 +136,7 @@ const Item = ({item, restaurantName}: ItemProps) => {
         <Text
           style={{
             borderRadius: 10,
-            fontSize: 23,
+            fontSize: 21,
             fontWeight: '600',
             paddingVertical: 3,
           }}>
@@ -169,25 +144,23 @@ const Item = ({item, restaurantName}: ItemProps) => {
         </Text>
         <Text
           style={{
-            fontSize: 15,
+            fontSize: 16,
             marginVertical: 3,
             fontWeight: '500',
-            maxWidth: '90%',
-            marginLeft: 5,
+            maxWidth: '100%',
           }}>
           {item.desc}
         </Text>
         <Text
           style={{
-            fontSize: 15,
+            fontSize: 16,
             marginVertical: 5,
             fontWeight: '500',
-            marginLeft: 5,
           }}>
           {item.price}
         </Text>
       </View>
-      <View style={{flex: 1, marginRight: 10, marginTop: 5}}>
+      <View style={{flex: 0.3, marginRight: 10, alignSelf: 'center'}}>
         <Image
           source={{
             uri: item.image,
