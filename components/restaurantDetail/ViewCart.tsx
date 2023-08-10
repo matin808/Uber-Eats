@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import ViewCartContainer from './CartModal';
 import firestore from '@react-native-firebase/firestore';
+import LottieView from 'lottie-react-native';
 
 interface IViewCartProps {
   navigation: any;
@@ -12,6 +13,7 @@ interface IViewCartProps {
 
 const ViewCart = ({navigation, restaurantName}: IViewCartProps) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const cartData = useSelector(
     (state: any) => state.cartReducer.selectedItems.items,
@@ -34,6 +36,8 @@ const ViewCart = ({navigation, restaurantName}: IViewCartProps) => {
 
   // firebase
   const addOrderToFirebase = () => {
+    setModalVisible(false);
+    setLoading(true);
     const ordersCollections = firestore().collection('orders');
     // firestore()
     //   .collection('orders')
@@ -44,11 +48,11 @@ const ViewCart = ({navigation, restaurantName}: IViewCartProps) => {
         createdAt: firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
-        console.log('Item added!');
+        setTimeout(() => {
+          setLoading(false);
+          navigation.navigate('OrderCompleted');
+        }, 1500);
       });
-
-    setModalVisible(false);
-    navigation.navigate('OrderCompleted');
   };
   //
   return (
@@ -102,7 +106,31 @@ const ViewCart = ({navigation, restaurantName}: IViewCartProps) => {
             />
           </Modal>
         </View>
-      ) : null}
+      ) : (
+        <></>
+      )}
+
+      {loading ? (
+        <View
+          style={{
+            backgroundColor: 'black',
+            opacity: 0.6,
+            justifyContent: 'center',
+            alignContent: 'center',
+            width: '100%',
+            position: 'absolute',
+            height: '100%',
+          }}>
+          <LottieView
+            style={{height: 200}}
+            source={require('../../assests/animations/scanner.json')}
+            speed={3}
+            autoPlay
+          />
+        </View>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

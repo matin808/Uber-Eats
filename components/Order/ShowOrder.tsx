@@ -1,7 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {View, Text} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import LottieView from 'lottie-react-native';
+import MenuItem from '../restaurantDetail/MenuItem';
+import firestore from '@react-native-firebase/firestore';
+// import MenuItem from '../components/restaurantDetail/MenuItem';
 
 interface IShowOrderProps {
   restaurantName: string;
@@ -9,24 +12,45 @@ interface IShowOrderProps {
 }
 
 const ShowOrder = ({restaurantName, totalInd}: IShowOrderProps) => {
-  return (
-    <View style={{flex: 1}}>
-      <LottieView
-        style={{height: 100, alignSelf: 'center', marginBottom: 30}}
-        source={require('../../assests/animations/cooking.json')}
-        autoPlay
-        loop={false}
-        speed={0.5}
-      />
-      <Text>
-        Your Order has been placed at {restaurantName} Restaurant for Total of{' '}
-        {totalInd}
-      </Text>
+  // const [cartItemData, setCartItemData] = React.useState<any>({
+  //   items: [
+  //     {
+  //       id: 1,
+  //       title: 'Bologna',
+  //       desc: 'With butter lettuce, tomato and sauce bechamel',
+  //       price: '$13.50',
+  //       image:
+  //         'https://www.modernhoney.com/wp-content/uploads/2019/08/Classic-Lasagna-14-scaled.jpg',
+  //     },
+  //   ],
+  // });
 
+  // useEffect(() => {
+  //   const unsubscribe = firestore()
+  //     .collection('orders')
+  //     .orderBy('createdAt', 'desc')
+  //     .limit(1)
+  //     .onSnapshot(snapshot => {
+  //       snapshot.docs.map(doc => {
+  //         setCartItemData(doc.data());
+  //       });
+  //     });
+  //   return () => unsubscribe();
+  // }, []);
+  // console.log(cartItemData?.items);
+  return (
+    <View>
       <LottieView
-        style={{height: 100, alignSelf: 'center', marginTop: 30}}
-        source={require('../../assests/animations/cooking.json')}
+        style={{
+          height: 100,
+          marginVertical: 30,
+        }}
+        autoPlay
+        source={require('../../assests/animations/check-mark.json')}
       />
+      <Text style={{fontSize: 20, fontWeight: 'bold', marginHorizontal: 15}}>
+        Your order at {restaurantName} has been placed for {totalInd}
+      </Text>
     </View>
   );
 };
