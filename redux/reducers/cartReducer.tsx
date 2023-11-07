@@ -3,6 +3,8 @@ interface DefaultStateProps {
     items: Object[];
     restaurantName: string;
     checkboxValue?: boolean;
+    incrementItems?: Object[];
+    decrementItems?: Object[];
   };
 }
 
@@ -11,6 +13,8 @@ let defaultState: DefaultStateProps = {
     items: [],
     restaurantName: '',
     checkboxValue: false,
+    incrementItems: [],
+    decrementItems: [],
   },
 };
 

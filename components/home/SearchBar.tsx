@@ -1,6 +1,6 @@
 import {View, Text, TextInput, Button} from 'react-native';
 import React from 'react';
-import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+// import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const SearchBar = ({searchInput, setSearchInput}: any) => {

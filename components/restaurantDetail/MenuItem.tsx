@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Divider} from 'react-native-elements';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
@@ -96,6 +96,9 @@ const Item = ({
         ''
       ) : (
         <View style={{alignSelf: 'center', marginLeft: 20}}>
+          {/* <TouchableOpacity>
+            <Text>+</Text>
+          </TouchableOpacity> */}
           <BouncyCheckbox
             iconStyle={{borderColor: 'lightgray'}}
             fillColor="green"
@@ -109,6 +112,10 @@ const Item = ({
             //     : false
             // }
           />
+
+          {/* <TouchableOpacity>
+            <Text>-</Text>
+          </TouchableOpacity> */}
         </View>
       )}
       <View
